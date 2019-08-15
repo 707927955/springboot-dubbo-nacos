@@ -20,7 +20,7 @@ import java.io.Serializable;
  */
 /*
     //必须用下面这个格式
-    {"name":"李文静",
+    {"name":"张三",
 "address":"厦门",
 "iphone":"13465746761"}
  */
