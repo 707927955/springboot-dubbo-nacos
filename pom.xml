@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent fnacos-config.versionrom repository -->
+    </parent>
+
+    <groupId>com.kim</groupId>
+    <artifactId>springboot-dubbo-nacos</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>springboot-dubbo-nacos</name>
+
+    <description>Demo project for Spring Boot Dubbo Nacos</description>
+
+    <properties>
+        <!-- Environment Settings -->
+        <java.version>1.8</java.version>
+        <dubbo.vision>2.7.3</dubbo.vision>
+        <dubbo-nacos.vision>2.7.3</dubbo-nacos.vision>
+        <nacos.version>2.7.3</nacos.version>
+        <spring-boot-dubbo.version>2.7.3</spring-boot-dubbo.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <auto-configure.version>2.7.3</auto-configure.version>
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+        <lombok.version>1.16.18</lombok.version>
+        <common-service.version>0.0.1-SNAPSHOT</common-service.version>
+        <nacos-client>1.1.1</nacos-client>
+        <nacos-config-spring-boot.version>0.2.2</nacos-config-spring-boot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.kim</groupId>
+                <artifactId>kim-common-services</artifactId>
+                <version>${common-service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Apache Dubbo  -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.vision}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.vision}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>kim-user</module>
+        <module>kim-order</module>
+        <module>kim-common-services</module>
+        <module>kim-gateway</module>
+    </modules>
+
+    <build>
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<version>2.1.6.RELEASE</version>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://192.168.10.203:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://192.168.10.203:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
